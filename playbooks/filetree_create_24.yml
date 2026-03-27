@@ -31,7 +31,6 @@
       ansible.builtin.debug:
         msg:
           - "{{ ansible_facts['controller_token']['token'] }}"
-          - "{{ controller_username }}"
 
     - name: "Set the oauth token to be used since now"
       ansible.builtin.set_fact:
