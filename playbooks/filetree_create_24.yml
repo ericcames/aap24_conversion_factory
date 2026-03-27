@@ -18,7 +18,7 @@
           - "Please assign correct credentials to the Job Template"
 
     - name: Create a new token
-      ansible.platform.token:
+      ansible.controller.token:
         controller_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
         controller_username: "{{ lookup('ansible.builtin.env', 'CONTROLLER_USERNAME') }}"
         controller_password: "{{ lookup('ansible.builtin.env', 'CONTROLLER_PASSWORD') }}"
@@ -68,7 +68,7 @@
         name: infra.controller_configuration.filetree_create
 
     - name: Remove my token
-      ansible.platform.token:
+      ansible.controller.token:
         aap_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
         existing_token: "{{ ansible_facts['aap_token'] }}"
         aap_token: "{{ ansible_facts['aap_token']['token'] }}"
