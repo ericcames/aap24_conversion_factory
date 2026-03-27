@@ -30,12 +30,12 @@
     - name: Printout my token
       ansible.builtin.debug:
         msg:
-          - "{{ ansible_facts['aap_token']['token'] }}"
-          - "{{ aap_username }}"
+          - "{{ ansible_facts['controller_token']['token'] }}"
+          - "{{ controller_username }}"
 
     - name: "Set the oauth token to be used since now"
       ansible.builtin.set_fact:
-        aap_oauthtoken: "{{ ansible_facts['aap_token']['token'] }}"
+        controller_oauthtoken: "{{ ansible_facts['controller_token']['token'] }}"
 
     - name: Export all objects
       vars:
@@ -69,8 +69,8 @@
 
     - name: Remove my token
       ansible.controller.token:
-        aap_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
+        controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
         existing_token: "{{ ansible_facts['aap_token'] }}"
-        aap_token: "{{ ansible_facts['aap_token']['token'] }}"
-        aap_validate_certs: false
+        controller_token: "{{ ansible_facts['controller_token']['token'] }}"
+        validate_certs: false
         state: absent
