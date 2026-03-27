@@ -1,0 +1,76 @@
+---
+- name: Export controller 2.4 configs
+  hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+    # fail with good error for Automation controller user
+    - name: Determine that both AAP and Machine credentials are set
+      ansible.builtin.assert:
+        that:
+          - "lookup('ansible.builtin.env', 'CONTROLLER_USERNAME') !=''"
+          - "lookup('ansible.builtin.env', 'CONTROLLER_HOST') !=''"
+          - "lookup('ansible.builtin.env', 'CONTROLLER_PASSWORD') !=''"
+        fail_msg:
+          - "Red Hat Ansible Automation Platform credential is not set"
+          - "Please assign correct credentials to the Job Template"
+
+    - name: Create a new token
+      ansible.platform.token:
+        controller_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
+        controller_username: "{{ lookup('ansible.builtin.env', 'CONTROLLER_USERNAME') }}"
+        controller_password: "{{ lookup('ansible.builtin.env', 'CONTROLLER_PASSWORD') }}"
+        controller_validate_certs: false
+        description: Controller export
+        scope: write
+        state: present
+
+    - name: Printout my token
+      ansible.builtin.debug:
+        msg:
+          - "{{ ansible_facts['aap_token']['token'] }}"
+          - "{{ aap_username }}"
+
+    - name: "Set the oauth token to be used since now"
+      ansible.builtin.set_fact:
+        aap_oauthtoken: "{{ ansible_facts['aap_token']['token'] }}"
+
+    - name: Export all objects
+      vars:
+        output_path: "/tmp/filetree_output_new"
+        input_tag:
+          - all
+        valid_tags:
+          - all
+          - settings
+          - credentials
+          - credential_types
+          - execution_environments
+          - groups
+          - hosts
+          - inventory
+          - inventory_sources
+          - job_templates
+          - notification_templates
+          - organizations
+          - projects
+          - roles
+          - teams
+          - users
+          - workflow_job_templates
+          - instance_groups
+          - applications
+          - labels
+          - schedules
+      ansible.builtin.include_role:
+        name: infra.controller_configuration.filetree_create
+
+    - name: Remove my token
+      ansible.platform.token:
+        aap_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
+        existing_token: "{{ ansible_facts['aap_token'] }}"
+        aap_token: "{{ ansible_facts['aap_token']['token'] }}"
+        aap_validate_certs: false
+        state: absent
