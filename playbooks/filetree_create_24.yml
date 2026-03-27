@@ -19,7 +19,7 @@
 
     - name: Create a new token
       ansible.controller.token:
-        controller_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
+        controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
         controller_username: "{{ lookup('ansible.builtin.env', 'CONTROLLER_USERNAME') }}"
         controller_password: "{{ lookup('ansible.builtin.env', 'CONTROLLER_PASSWORD') }}"
         controller_validate_certs: false
