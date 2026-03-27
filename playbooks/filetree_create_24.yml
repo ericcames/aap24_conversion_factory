@@ -36,6 +36,10 @@
       ansible.builtin.set_fact:
         controller_oauthtoken: "{{ ansible_facts['controller_token']['token'] }}"
 
+    - name: Set controller_validate_certs
+      ansible.builtin.set_fact:
+        controller_validate_certs: false
+
     - name: Export all objects
       vars:
         output_path: "/tmp/filetree_output_new"
