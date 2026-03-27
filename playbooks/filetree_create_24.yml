@@ -73,7 +73,7 @@
     - name: Remove my token
       ansible.controller.token:
         controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        existing_token: "{{ ansible_facts['aap_token'] }}"
+        existing_token: "{{ ansible_facts['controller_token'] }}"
         controller_token: "{{ ansible_facts['controller_token']['token'] }}"
         validate_certs: false
         state: absent
