@@ -59,7 +59,7 @@
         dest: "{{ local_repo }}"
         accept_hostkey: true
         force: true
-        version: Dev
+        version: main
 
     - name: Create a directory if it does not exist
       ansible.builtin.file:
