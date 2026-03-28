@@ -40,6 +40,10 @@
       ansible.builtin.set_fact:
         controller_validate_certs: false
 
+    - name: Set controller_hostname
+      ansible.builtin.set_fact:
+        controller_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
+
     - name: Export all objects
       vars:
         output_path: "/tmp/filetree_output_new"
