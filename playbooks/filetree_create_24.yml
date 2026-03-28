@@ -44,7 +44,7 @@
       vars:
         output_path: "/tmp/filetree_output_new"
         input_tag:
-          - job_templates
+          - all
         valid_tags:
           - all
           - settings
