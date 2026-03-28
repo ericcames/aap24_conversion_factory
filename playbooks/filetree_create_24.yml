@@ -3,6 +3,12 @@
   hosts: localhost
   connection: local
   gather_facts: False
+  vars:
+    software_repository: https://{{ personal_access_token }}@github.com/ericcames/aap24_conversion_factory.git
+    personal_access_token: git_hub_token
+    local_repo: /var/tmp/github/aap24_conversion_factory.kit
+    git_name: ericcames
+    git_email: ericcames@msn.com
 
   tasks:
 
@@ -44,9 +50,26 @@
       ansible.builtin.set_fact:
         controller_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
 
+    - name: Clone the software repository
+      register: clone_result
+      run_once: true
+      when: software_repository is defined
+      ansible.builtin.git:
+        repo: "{{ software_repository }}"
+        dest: "{{ local_repo }}"
+        accept_hostkey: true
+        force: true
+        version: Dev
+
+    - name: Create a directory if it does not exist
+      ansible.builtin.file:
+        path: "{{ local_repo }}/filetree_output_new"
+        state: directory
+        mode: '0755'
+
     - name: Export all objects
       vars:
-        output_path: "/tmp/filetree_output_new"
+        output_path: "{{ local_repo }}/filetree_output_new"
         input_tag:
           - all
         valid_tags:
@@ -73,6 +96,41 @@
           - schedules
       ansible.builtin.include_role:
         name: infra.controller_configuration.filetree_create
+
+    - name: Add any new playbooks to the software_repository
+      changed_when: false
+      run_once: true
+      args:
+        chdir: "{{ local_repo }}"
+      ansible.builtin.shell: git add *
+
+    - name: Get the status of the repository
+      register: status_results
+      changed_when: false
+      ignore_errors: true
+      run_once: true
+      args:
+        chdir: "{{ local_repo }}"
+      ansible.builtin.shell: git status
+
+    - name: Commit the changes
+      when: status_results.stdout is search('Changes')
+      run_once: true
+      environment:
+        GIT_COMMITTER_NAME: "{{ git_name | default(omit) }}"
+        GIT_COMMITTER_EMAIL: "{{ git_email | default(omit) }}"
+        GIT_AUTHOR_NAME: "{{ git_name | default(omit) }}"
+        GIT_AUTHOR_EMAIL: "{{ git_email | default(omit) }}"
+      args:
+        chdir: "{{ local_repo }}"
+      ansible.builtin.shell: git commit -am 'Changed'
+
+    - name: Push the changes
+      run_once: true
+      when: software_repository is defined
+      args:
+        chdir: "{{ local_repo }}"
+      ansible.builtin.shell: git push
 
     - name: Remove my token
       ansible.controller.token:
