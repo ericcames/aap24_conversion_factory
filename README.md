@@ -45,3 +45,23 @@ The Ansible Automation Platform 2.4 conversion factory
 
 4. Ensure the Galaxy credentials are related to the Default Organization
 ![alt text](https://github.com/ericcames/aap24_conversion_factory/blob/main/docs/images/aap24orgcreds.png "Default Organization")
+
+5. Create your project
+![alt text](https://github.com/ericcames/aap24_conversion_factory/blob/main/docs/images/aap24proj.png "Project")<br>
+
+    - Name
+    ```
+    aap24_conversion_factory
+    ```
+    - Organization
+    ```
+    Default
+    ```
+    - Source Control Type
+    ```
+    Git
+    ```
+    - Source Control URL
+    ```
+    https://github.com/ericcames/aap24_conversion_factory.git
+    ```
