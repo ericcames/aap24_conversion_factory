@@ -1,7 +1,12 @@
 The Ansible Automation Platform 2.4 conversion factory
 =============
 
+**Do you need an AAP 2.4?**
+
+1. [Ansible Automation Platform 2.4 here](https://github.com/ericcames/aap24_conversion_factory/blob/main/docs/NEW_AAP24_CONTROLLER.md "AAP24")<br>
+
 **Getting started**
+
 1. [Get Automation Hub Token](https://console.redhat.com/ansible/automation-hub/token/ "Load Token")<br>
 2. Ensure that we have a certified credential
     - Name
