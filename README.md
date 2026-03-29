@@ -65,3 +65,32 @@ The Ansible Automation Platform 2.4 conversion factory
     ```
     https://github.com/ericcames/aap24_conversion_factory.git
     ```
+6. Create your ansible automation platform credential
+![alt text](https://github.com/ericcames/aap24_conversion_factory/blob/main/docs/images/aap24platcred.png "Cred")
+
+    - Name
+    ```
+    AAP Credential
+    ```
+    - Credential Type
+    ```
+    Red Hat Ansible Automation Platform
+    ```
+    - Red Hat Ansible Automation Platform
+    ```
+    https://dev0-aap.apps.rosa.rosa-86rjc.jsdv.p3.openshiftapps.com
+    ```
+
+7. Create your job template
+![alt text](https://github.com/ericcames/aap24_conversion_factory/blob/main/docs/images/aap24temp.png "Template")
+
+- Name
+```
+filetree_create_24
+```
+
+Survey variables
+```
+personal_access_token
+```
+8. Launch the job template
