@@ -22,7 +22,7 @@ The Ansible Automation Platform 2.4 conversion factory
     ```
     - API Token
 
-![alt text](https://github.com/ericcames/aap24_conversion_factory/blob/main/images/aap24cred.png "certified")
+![alt text](https://github.com/ericcames/aap24_conversion_factory/blob/main/docs/images/aap24cred.png "certified")
 
 3. Ensure that we have a validated credential
     - Name
@@ -44,4 +44,4 @@ The Ansible Automation Platform 2.4 conversion factory
     - API Token
 
 4. Ensure the Galaxy credentials are related to the Default Organization
-![alt text](https://github.com/ericcames/aap24_conversion_factory/blob/main/images/aap24orgcreds.png "Default Organization")
+![alt text](https://github.com/ericcames/aap24_conversion_factory/blob/main/docs/images/aap24orgcreds.png "Default Organization")
