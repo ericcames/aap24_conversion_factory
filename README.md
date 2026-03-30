@@ -5,7 +5,11 @@ The Ansible Automation Platform 2.4 conversion factory
 
 1. [Ansible Automation Platform 2.4 here](https://github.com/ericcames/aap24_conversion_factory/blob/main/docs/NEW_AAP24_CONTROLLER.md "AAP24")<br>
 
-**Getting started**
+**Export AAP 2.4 objects**
+
+1. [ Export Ansible Automation Platform 2.4 here](https://github.com/ericcames/aap24_export_factory/blob/main/README.md "AAP24")<br>
+
+**Transform AAP 2.4 objects to 2.5**
 
 1. [Get Automation Hub Token](https://console.redhat.com/ansible/automation-hub/token/ "Load Token")<br>
 2. Ensure that we have a certified credential
@@ -91,7 +95,7 @@ The Ansible Automation Platform 2.4 conversion factory
 
 - Name
 ```
-Extract 24 Objects
+Transform 24 Objects
 ```
 
 Survey variables
