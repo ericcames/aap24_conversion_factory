@@ -1,0 +1,22 @@
+---
+controller_schedules:
+  - name: "Cleanup Job Schedule"
+    description: "Automatically Generated Schedule"
+    enabled: true
+    unified_job_template: "Cleanup Job Details"
+    dtstart: "2026-04-05T21:12:42Z"
+    dtend: ""
+    timezone: "UTC"
+    rrule: "DTSTART:20260401T211242Z RRULE:FREQ=WEEKLY;INTERVAL=1;BYDAY=SU"
+    extra_data:
+      days: '120'
+    scm_branch: ""
+    forks: 0
+    job_slice_count: 0
+    timeout: 0
+    job_type: ""
+    job_tags: ""
+    skip_tags: ""
+    limit: ""
+    verbosity: 0
+...
