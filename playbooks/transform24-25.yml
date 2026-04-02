@@ -25,7 +25,7 @@
 
     - name: Call upgrade_config role
       vars:
-        input_authenticator_name: "IDM LDAP"
+        # input_authenticator_name: "IDM LDAP"
         aap24_configs_dir: "{{ local_repo }}/aap24_configs"
         aap25_configs_dir: "{{ local_repo }}/aap25_configs"
       ansible.builtin.include_role:
