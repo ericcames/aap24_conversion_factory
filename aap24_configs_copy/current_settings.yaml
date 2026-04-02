@@ -1,0 +1,22 @@
+---
+controller_settings:
+  - settings:
+      ACTIVITY_STREAM_ENABLED: "true"
+      ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC: "false"
+      ORG_ADMINS_CAN_SEE_ALL_USERS: "true"
+      MANAGE_ORGANIZATION_AUTH: "true"
+      TOWER_URL_BASE: "https://towerhost"
+      REMOTE_HOST_HEADERS:
+        - REMOTE_ADDR
+        - REMOTE_HOST
+      REDHAT_USERNAME: "0e9c9d22-8898-4079-80d1-5e47e5cb3684"
+      REDHAT_PASSWORD: ""
+      SUBSCRIPTIONS_USERNAME: "zigfreed"
+      SUBSCRIPTIONS_PASSWORD: ""
+      SUBSCRIPTIONS_CLIENT_ID: ""
+      SUBSCRIPTIONS_CLIENT_SECRET: ""
+      AUTOMATION_ANALYTICS_URL: "https://cloud.redhat.com/api/ingress/v1/upload"
+      DEFAULT_CONTROL_PLANE_QUEUE_NAME: "controlplane"
+      DEFAULT_EXECUTION_QUEUE_NAME: "default"
+      DEFAULT_EXECUTION_ENVIRONMENT: "null"
+...
